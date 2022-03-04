@@ -11,7 +11,7 @@ import SwiftUI
 struct AshkbookApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(text: .constant(""))
         }
     }
 }
