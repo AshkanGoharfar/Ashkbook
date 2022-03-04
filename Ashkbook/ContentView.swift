@@ -104,6 +104,8 @@ struct ContentView: View {
 // Ashkbook post view
 struct FBPost: View  {
     
+    @State var isLiked: Bool = false
+    
     // variables of every post
     let name: String
     let post: String
@@ -152,9 +154,9 @@ struct FBPost: View  {
             // Comment like share button
             HStack {
                 Button(action: {
-                    
+                    isLiked.toggle()
                 }, label: {
-                    Text("Like")
+                    Text(isLiked ? "Liked" : "Like")
                 })
                 
                 Spacer()
