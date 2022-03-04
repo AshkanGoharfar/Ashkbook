@@ -11,6 +11,8 @@
 		4129F3B427D1A708008FD7B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129F3B327D1A708008FD7B3 /* ContentView.swift */; };
 		4129F3B627D1A70A008FD7B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4129F3B527D1A70A008FD7B3 /* Assets.xcassets */; };
 		4129F3B927D1A70A008FD7B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4129F3B827D1A70A008FD7B3 /* Preview Assets.xcassets */; };
+		4147EDB227D1D13400DF2977 /* StoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4147EDB127D1D13400DF2977 /* StoriesView.swift */; };
+		4147EDB427D1D1F000DF2977 /* AshkbookPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4147EDB327D1D1F000DF2977 /* AshkbookPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		4129F3B327D1A708008FD7B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4129F3B527D1A70A008FD7B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4129F3B827D1A70A008FD7B3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4147EDB127D1D13400DF2977 /* StoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesView.swift; sourceTree = "<group>"; };
+		4147EDB327D1D1F000DF2977 /* AshkbookPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AshkbookPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				4129F3B327D1A708008FD7B3 /* ContentView.swift */,
 				4129F3B527D1A70A008FD7B3 /* Assets.xcassets */,
 				4129F3B727D1A70A008FD7B3 /* Preview Content */,
+				4147EDB127D1D13400DF2977 /* StoriesView.swift */,
+				4147EDB327D1D1F000DF2977 /* AshkbookPost.swift */,
 			);
 			path = Ashkbook;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4129F3B427D1A708008FD7B3 /* ContentView.swift in Sources */,
+				4147EDB427D1D1F000DF2977 /* AshkbookPost.swift in Sources */,
 				4129F3B227D1A708008FD7B3 /* AshkbookApp.swift in Sources */,
+				4147EDB227D1D13400DF2977 /* StoriesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
