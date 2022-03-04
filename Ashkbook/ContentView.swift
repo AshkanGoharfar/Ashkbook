@@ -75,11 +75,21 @@ struct ContentView: View {
                                     
                                         // fianly clipped it here
                                         .clipped()
-//                                    Spacer()
+//                                         Spacer()
                                 }
                             }
                             .padding()
                         }
+                        
+                        // Add FaceBook Post
+                        FBPost(name: "Ashkan Goharfar", post: "Hello, welcome to Ashkogram, I hope you enjoy this app and its features, peace!!", imageName: "person1")
+                        Spacer()
+                        
+                        FBPost(name: "Akash Raju", post: "Hello every one, nice to meet you", imageName: "person2")
+                        Spacer()
+                        
+                        FBPost(name: "Brad Pit", post: "I like this application very much. I hope I can see other version of this application very soon.", imageName: "person3")
+                        Spacer()
                         
                     }
                 }
@@ -89,6 +99,87 @@ struct ContentView: View {
         }
     }
 }
+
+
+// Ashkbook post view
+struct FBPost: View  {
+    
+    // variables of every post
+    let name: String
+    let post: String
+    let imageName: String
+    
+    var body: some View {
+        VStack {
+            
+            // Profile picture and name
+            HStack {
+                Image(imageName)
+                    .resizable()
+                    .frame(width: 50, height: 50, alignment: .center)
+                    .aspectRatio(contentMode: .fill)
+                    .cornerRadius(50/2)
+                
+                VStack {
+                    HStack {
+                        Text(name)
+                            .foregroundColor(Color.blue)
+                            .font(.system(size: 18, weight: .semibold, design: .default))
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Text("14 minutes ago")
+                            .foregroundColor(Color(.secondaryLabel))
+                        Spacer()
+                    }
+
+                }
+                Spacer()
+            }
+            Spacer()
+            
+            // Actual post
+            HStack {
+                Text(post)
+                    .font(.system(size: 24, weight: .regular, design: .default))
+                    .multilineTextAlignment(.leading)
+                Spacer()
+            }
+            
+            Spacer()
+            
+            // Comment like share button
+            HStack {
+                Button(action: {
+                    
+                }, label: {
+                    Text("Like")
+                })
+                
+                Spacer()
+                Button(action: {
+                    
+                }, label: {
+                    Text("Comment")
+                })
+                
+                Spacer()
+                Button(action: {
+                    
+                }, label: {
+                    Text("Share")
+                })
+                
+            }
+            .padding()
+        }
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(7)
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
