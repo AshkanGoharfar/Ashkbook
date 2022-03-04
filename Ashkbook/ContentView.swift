@@ -7,11 +7,24 @@
 
 import SwiftUI
 
+// Convert variable to hashable, because whenever a for loop executes it needs to be able to specify an unique id for the actual elementa\ and when you make something hashable it makes itbasically uniquein the sense of every single element with the different valeus for the name post and image name are goinf to be unique are goinf to be unique and you are going to compute rather swift ui is going to compute unique hash just some string value to represent it.
+struct FBPostModel: Hashable {
+    // variables of every post
+    let name: String
+    let post: String
+    let imageName: String
+}
+
 struct ContentView: View {
     
     @Binding var text: String
     
     let stories = ["story1", "story2", "story3", "story1", "story2", "story3"]
+    
+    let posts: [FBPostModel] = [
+        FBPostModel(name: "Ashkan Goharfar", post: "Hello, welcome to Ashkogram, I hope you enjoy this app and its features, peace!!", imageName: "person1"),
+        FBPostModel(name: "Akash Raju", post: "Hello every one, nice to meet you", imageName: "person2"),
+        FBPostModel(name: "Brad Pit", post: "I like this application very much. I hope I can see other version of this application very soon.", imageName: "person3")]
     
     // grabbed facebook rgb color value
     let facebookBlue = UIColor(red: 23/255.0,
@@ -62,40 +75,44 @@ struct ContentView: View {
                 ScrollView(.vertical) {
                     VStack {
                         
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 3) {
-                                ForEach(stories, id: \.self) { name in
-                                    Image(name)
-                                        // Add aspect ratio to modify the image size to the frame size
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                    
-                                        .frame(width: 140, height: 200, alignment: .center)
-                                        .background(Color.red)
-                                    
-                                        // fianly clipped it here
-                                        .clipped()
-//                                         Spacer()
-                                }
-                            }
-                            .padding()
-                        }
+                        StoriesView(stories: stories)
                         
                         // Add FaceBook Post
-                        FBPost(name: "Ashkan Goharfar", post: "Hello, welcome to Ashkogram, I hope you enjoy this app and its features, peace!!", imageName: "person1")
-                        Spacer()
-                        
-                        FBPost(name: "Akash Raju", post: "Hello every one, nice to meet you", imageName: "person2")
-                        Spacer()
-                        
-                        FBPost(name: "Brad Pit", post: "I like this application very much. I hope I can see other version of this application very soon.", imageName: "person3")
-                        Spacer()
-                        
+                        ForEach(posts, id: \.self) { model in
+                            FBPost(model: model)
+                            Spacer()
+                        }
                     }
                 }
             }
             
             Spacer()
+        }
+    }
+}
+
+struct StoriesView: View {
+    
+    let stories: [String]
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 3) {
+                ForEach(stories, id: \.self) { name in
+                    Image(name)
+                        // Add aspect ratio to modify the image size to the frame size
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                    
+                        .frame(width: 140, height: 200, alignment: .center)
+                        .background(Color.red)
+                    
+                        // fianly clipped it here
+                        .clipped()
+//                                         Spacer()
+                }
+            }
+            .padding()
         }
     }
 }
@@ -106,17 +123,15 @@ struct FBPost: View  {
     
     @State var isLiked: Bool = false
     
-    // variables of every post
-    let name: String
-    let post: String
-    let imageName: String
+    let model: FBPostModel
+
     
     var body: some View {
         VStack {
             
             // Profile picture and name
             HStack {
-                Image(imageName)
+                Image(model.imageName)
                     .resizable()
                     .frame(width: 50, height: 50, alignment: .center)
                     .aspectRatio(contentMode: .fill)
@@ -124,7 +139,7 @@ struct FBPost: View  {
                 
                 VStack {
                     HStack {
-                        Text(name)
+                        Text(model.name)
                             .foregroundColor(Color.blue)
                             .font(.system(size: 18, weight: .semibold, design: .default))
                         Spacer()
@@ -143,7 +158,7 @@ struct FBPost: View  {
             
             // Actual post
             HStack {
-                Text(post)
+                Text(model.post)
                     .font(.system(size: 24, weight: .regular, design: .default))
                     .multilineTextAlignment(.leading)
                 Spacer()
